@@ -5,8 +5,8 @@ spring:
 
   datasource:
     url: jdbc:postgresql://localhost:5432/projectForGit?currentSchema=public
-    username: ${embedded.postgresql.user}
-    password: ${embedded.postgresql.password}
+    username: user
+    password: password
   jpa:
     show-sql: true
     hibernate:
@@ -16,5 +16,9 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL10Dialect
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
 server:
   port: ${PORT:8080}
+
