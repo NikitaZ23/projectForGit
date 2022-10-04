@@ -12,7 +12,6 @@ import java.util.UUID;
 public class ProfileDto {
     private int id;
     UUID uuid;
-    UUID user;
     String name;
     String surname;
     String sex;

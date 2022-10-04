@@ -26,7 +26,7 @@ public class Profile {
     @Column(name = "\"uuid\"", nullable = false)
     private UUID uuid = UUID.randomUUID();
 
-    @Column(name = "\"name_profile\"")
+    @Column(name = "\"name\"")
     String name;
 
     @Column(name = "\"surname\"")

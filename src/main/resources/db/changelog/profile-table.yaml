@@ -25,7 +25,7 @@ databaseChangeLog:
                   name: uuid
                   type: UUID
               - column:
-                  name: name_profile
+                  name: name
                   type: varchar(50)
               - column:
                   name: surname
