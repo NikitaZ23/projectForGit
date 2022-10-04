@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.ProfileService.ProfileService;
+import com.example.ProfileService.ProfileServiceImp;
 import com.example.dto.ProfileDto;
 import com.example.dto.requests.CreateProfileRequest;
 import com.example.exceptions.ProfileNotFoundExceptions;
@@ -16,7 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @RequestMapping("/profiles")
 public class ProfileController {
-    private final ProfileService profileService;
+    private final ProfileServiceImp profileService;
 
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
@@ -43,6 +44,7 @@ public class ProfileController {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public ProfileDto createProfile(@Valid @RequestBody final CreateProfileRequest request) {
+        System.out.println(request);
         return profileService.save(request);
     }
 }

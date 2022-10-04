@@ -6,7 +6,7 @@ import com.example.dto.requests.CreateProfileRequest;
 import com.example.exceptions.ProfileNotFoundExceptions;
 import com.example.mapper.ProfileMapper;
 import com.example.repository.ProfileRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,13 +14,13 @@ import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
-public class ProfileServiceImp implements ProfileService {
+@RequiredArgsConstructor
+public class ProfileServiceImp implements ProfileService{
+    ProfileRepository profileRepository;
+
+    ProfileMapper profileMapper;
+
     private static final String PROFILE_NOT_FOUND = "Profile Not found";
-
-    private final ProfileRepository profileRepository;
-
-    private final ProfileMapper profileMapper;
 
     @Override
     public Iterable<ProfileDto> findAll() {
@@ -34,7 +34,7 @@ public class ProfileServiceImp implements ProfileService {
 
     @Override
     public ProfileDto findProfile(UUID uuid) {
-        return profileMapper.map(profileRepository.findByUuid(uuid).orElseThrow(() ->new ProfileNotFoundExceptions(PROFILE_NOT_FOUND)));
+        return profileMapper.map(profileRepository.findByUuid(uuid).orElseThrow(() -> new ProfileNotFoundExceptions(PROFILE_NOT_FOUND)));
     }
 
     @Transactional

@@ -15,6 +15,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "\"profiles\"")
 public class Profile {
 
     @Id
